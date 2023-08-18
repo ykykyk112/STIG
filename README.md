@@ -25,7 +25,7 @@ Enter the command below. You can change the GPU device by modifying the option `
 
 The sampled results are visualized in the ```results/{experiment_name}/sample/``` during the training. After training, the results image and magnitude spectrum will be saved at each folder in ```results/{experiment_name}/eval/```.
 
-```python train.py --size 256 --data {dataset_name} --epoch 10 --batch_size 1 --lr 0.00008 --device {gpu_ids} --dst {experiment_name}```
+```python train.py --size {size} --data {dataset_name} --epoch 10 --batch_size 1 --lr 0.00008 --device {gpu_ids} --dst {experiment_name}```
 
 We also provide an training log using the ```tensorboard```. If you want to use it, you can access the training log using the code below.
 
