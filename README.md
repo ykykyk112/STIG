@@ -25,16 +25,24 @@ Enter the command below. You can change the GPU device by modifying the option `
 
 The sampled results are visualized in the ```results/{experiment_name}/sample/``` during the training. After training, the results image and magnitude spectrum will be saved at each folder in ```results/{experiment_name}/eval/```.
 
-```python train.py --size 256 --data {dataset_name} --epoch 10 --batch_size 1 --lr 0.00008 --device 0 --dst {experiment_name}```
+```python train.py --size 256 --data {dataset_name} --epoch 10 --batch_size 1 --lr 0.00008 --device {gpu_ids} --dst {experiment_name}```
 
 We also provide an training log using the ```tensorboard```. If you want to use it, you can access the training log using the code below.
 
 ```tensorboard --logdir='./results/{experiment_name}/tensorboard'```
 
 ## Evaluation STIG
-We provide two evaluation metric, FID and log frequency distance. To evaluate your experiment result, enter the command below. You can choose the evaluation metric in ```[fid / lfd]```. The default option is set to ```fid```.
+We provide three evaluation metric, FID and log frequency distance. To evaluate your experiment result, enter the command below. You can choose the evaluation metric in ```[image_fid / magnitude_fid / lfd]```. The default option is set to ```magnitude_fid```.
 
-```python eval.py --eval_root {experiment_name} --eval_mode {metric} --device 0```
+```python eval.py --eval_root {experiment_name} --eval_mode {metric} --device {gpu_ids}```
+
+## Deepfake detection
+We provide sample codes to train and evaluate the detectors in the paper. To train the detector, choose the classifier from ```[cnn / vit]``` and enter the command below.
+
+```python detect.py --is_train True --classifier {classifier} --lr 0.0002 --size {size} --device {gpu_ids} --class_epoch 20 --class_batch_size 32 --dst {experiment_name}```
+
+The training results of the detector are saved in the folder ```results/{experiment_name}/{classifier}_classifier/```.
+
 
 ## Non-deterministic behavior of the upsampling layer
 We use the bi-linear upsampling layer (```nn.Upsample```) in the STIG.
