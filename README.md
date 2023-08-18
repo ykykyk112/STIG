@@ -43,6 +43,9 @@ We provide sample codes to train and evaluate the detectors in the paper. To tra
 
 The training results of the detector are saved in the folder ```results/{experiment_name}/{classifier}_classifier/```.
 
+For evaluation a classifier using generated images, enter the command below.
+
+```python detect.py --is_train True --classifier {classifier} --lr 0.0002 --size {size} --device {gpu_ids} --class_batch_size 32 --dst {experiment_name} --eval_root {folder_of_generated_images}```
 
 ## Non-deterministic behavior of the upsampling layer
 We use the bi-linear upsampling layer (```nn.Upsample```) in the STIG.
