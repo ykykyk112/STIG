@@ -1,4 +1,9 @@
-# Code for STIG
+# STIG: Spectrum Translation for refinement of Image Generation
+STIG is for boosting the quality of image generation by reducing spectral discrepancies of current generative models including GANs and Diffusion Models. The algorithm is elaborated in our paper ```paper``` that has been published in AAAI 2024.
+
+
+## Quick Overview
+
 
 ## Installing dependency
 ```
@@ -27,7 +32,7 @@ The sampled results are visualized in the ```results/{experiment_name}/sample/``
 
 ```python train.py --size {size} --data {dataset_name} --epoch 10 --batch_size 1 --lr 0.00008 --device {gpu_ids} --dst {experiment_name}```
 
-We also provide an training log using the ```tensorboard```. If you want to use it, you can access the training log using the code below.
+We also provide a training log using the ```tensorboard``` library. If you want to use it, you can access the training log using the code below.
 
 ```tensorboard --logdir='./results/{experiment_name}/tensorboard'```
 
