@@ -3,7 +3,7 @@ STIG is for boosting the quality of image generation by reducing spectral discre
 
 
 ## Quick Overview
-
+https://github.com/ykykyk112/STIG/assets/59644868/33fc02a5-c95f-43fb-a74a-c49486aa65b1
 
 ## Installing dependency
 ```
