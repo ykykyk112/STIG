@@ -30,7 +30,7 @@ if __name__ == '__main__' :
     model = STIG(opt, device).to(device)
 
     save_path = os.path.join('./results', opt.dst)
-    os.mkdir(save_path)
+    os.makedirs(save_path, exist_ok = True)
     os.mkdir(os.path.join(save_path, 'tensorboard'))
     os.mkdir(os.path.join(save_path, 'sample'))
     os.mkdir(os.path.join(save_path, 'eval'))
