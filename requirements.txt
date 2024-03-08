@@ -1,0 +1,10 @@
+torch
+torchvision
+torchsummary>=1.5.1
+scikit-learn==1.0.2
+matplotlib==3.3.4
+tqdm==4.62.1
+pytorch-fid==0.2.1
+packaging
+tensorboard
+pytorch_pretrained_vit==0.0.7
