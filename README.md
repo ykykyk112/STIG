@@ -3,7 +3,8 @@ STIG is for boosting the quality of image generation by reducing spectral discre
 
 
 ## Quick Overview
-https://github.com/ykykyk112/STIG/assets/59644868/33fc02a5-c95f-43fb-a74a-c49486aa65b1
+STIG mitigates spectral discrepancies of the generated images based on GAN-based image-to-image translation architecture and patch-wise contrastive learning. It manipulates the frequency components to address the spectral discrepancy components effectively in the frequency domain. Auxiliary regularizations prevent the potential corruption of the image during spectral translation.
+![figure_3_camera_ready_version](https://github.com/ykykyk112/STIG/assets/59644868/33fc02a5-c95f-43fb-a74a-c49486aa65b1)
 
 ## Installing dependency
 ```
