@@ -297,17 +297,23 @@ class InferenceModel :
 
         model.set_input(input, evaluation = True)
 
-        input_img = model.image_A.detach().squeeze(0)
-        #input_mag = model.
+        input_img = model.input_image_normed.detach().squeeze(0)
+        input_mag = model.input_mag.detach().squeeze(0)
 
         denoised_img = model.denoised_image_normed.detach().squeeze(0)
         denoised_mag = model.denoised_mag.detach().squeeze(0)
         
+        input_pil = self.to_pil(input_img)
+        input_mag_pil = self.to_pil(input_mag)
+
         denoised_pil = self.to_pil(denoised_img)
         denoised_mag_pil = self.to_pil(denoised_mag)
 
-        denoised_pil.save(os.path.join(self.denoised_path, '{:06d}.png'.format(n)), 'png')
-        denoised_mag_pil.save(os.path.join(self.denoised_mag_path, '{:06d}.png'.format(n)), 'png')
+        input_pil.save(os.path.join(self.denoised_path, '{:06d}.png'.format(n)), 'png')
+        input_mag_pil.save(os.path.join(self.denoised_mag_path, '{:06d}.png'.format(n)), 'png')
+
+        denoised_pil.save(os.path.join(self.noise_path, '{:06d}.png'.format(n)), 'png')
+        denoised_mag_pil.save(os.path.join(self.noise_mag_path, '{:06d}.png'.format(n)), 'png')
 
     def zero_to_one(self, img) :
 
