@@ -89,6 +89,8 @@ class STIG(nn.Module) :
 
         self.real_A, self.real_A_phase = self.to_frequency_domain(self.image_A)
         self.real_A, self.A_vmax, self.A_vmin = normalize(self.real_A)
+        print(self.image_A.min(), self.image_A.max())
+        print(self.denoised_image_A.min(), self.denoised_image_A.max())
 
         with torch.no_grad():
             self.fake_B = self.generator(self.real_A)
