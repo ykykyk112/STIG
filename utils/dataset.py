@@ -183,7 +183,6 @@ class InferenceDataset(Dataset):
         self.image = Image.open(self.img_list[index])
         self.image = self.transform(self.image)
         self.image = self.image.repeat(3, 1, 1)
-        print(self.image.shape)
 
         return self.image
 

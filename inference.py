@@ -37,3 +37,4 @@ if __name__ == '__main__' :
 
         model.set_input(sample, evaluation = True)
         model.evaluation()
+        print(model.fake_B.shape)
