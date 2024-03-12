@@ -37,6 +37,6 @@ if __name__ == '__main__' :
         model.set_input(sample, evaluation = True)
         model.evaluation()
 
-        inferencer.step(model, n)
+        inferencer.step(model, sample, n)
         
 

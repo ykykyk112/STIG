@@ -293,7 +293,7 @@ class InferenceModel :
         os.mkdir(self.noise_mag_path)
         os.mkdir(self.denoised_mag_path)
 
-    def step(self, model, input) :
+    def step(self, model, input, n) :
 
         model.set_input(input, evaluation = True)
 
