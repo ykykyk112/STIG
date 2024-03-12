@@ -90,14 +90,13 @@ class STIG(nn.Module) :
         self.real_A, self.real_A_phase = self.to_frequency_domain(self.image_A)
         self.real_A, self.A_vmax, self.A_vmin = normalize(self.real_A)
         print(self.image_A.min(), self.image_A.max())
-        print(self.denoised_image_A.min(), self.denoised_image_A.max())
 
         with torch.no_grad():
             self.fake_B = self.generator(self.real_A)
 
             fake_B_inverse_normed = inverse_normalize(self.fake_B, self.A_vmax, self.A_vmin)
             self.denoised_image_A = polar2img(fake_B_inverse_normed, self.real_A_phase)
-
+            print(self.denoised_image_A.min(), self.denoised_image_A.max())
             self.denoised_image_normed = image_normalize(self.denoised_image_A)
             self.denoised_mag = get_magnitude(self.denoised_image_normed)
 
