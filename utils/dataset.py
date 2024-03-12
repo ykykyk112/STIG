@@ -193,7 +193,7 @@ class InferenceDataset(Dataset):
     def init_options(self, opt) :
 
         self.opt = opt
-        self.batch_size = opt.class_batch_size
+        self.batch_size = opt.batch_size
         self.size = opt.size
         self.inference_data_root = opt.inference_data
 
