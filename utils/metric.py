@@ -287,11 +287,11 @@ class InferenceModel :
         self.denoised_mag_path = os.path.join(self.save_path, 'denoised_mag')
         
 
-        os.mkdir(self.noise_path)
-        os.mkdir(self.denoised_path)
+        os.makedirs(self.noise_path, exist_ok = True)
+        os.makedirs(self.denoised_path, exist_ok = True)
 
-        os.mkdir(self.noise_mag_path)
-        os.mkdir(self.denoised_mag_path)
+        os.makedirs(self.noise_mag_path, exist_ok = True)
+        os.makedirs(self.denoised_mag_path, exist_ok = True)
 
     def step(self, model, input, n) :
 
