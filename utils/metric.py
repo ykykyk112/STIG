@@ -309,11 +309,11 @@ class InferenceModel :
         denoised_pil = self.to_pil(denoised_img)
         denoised_mag_pil = self.to_pil(denoised_mag)
 
-        input_pil.save(os.path.join(self.denoised_path, '{:06d}.png'.format(n)), 'png')
-        input_mag_pil.save(os.path.join(self.denoised_mag_path, '{:06d}.png'.format(n)), 'png')
+        input_pil.save(os.path.join(self.noise_path, '{:06d}.png'.format(n)), 'png')
+        input_mag_pil.save(os.path.join(self.noise_mag_path, '{:06d}.png'.format(n)), 'png')
 
-        denoised_pil.save(os.path.join(self.noise_path, '{:06d}.png'.format(n)), 'png')
-        denoised_mag_pil.save(os.path.join(self.noise_mag_path, '{:06d}.png'.format(n)), 'png')
+        denoised_pil.save(os.path.join(self.denoised_path, '{:06d}.png'.format(n)), 'png')
+        denoised_mag_pil.save(os.path.join(self.denoised_mag_path, '{:06d}.png'.format(n)), 'png')
 
     def zero_to_one(self, img) :
 
