@@ -30,7 +30,7 @@ if __name__ == '__main__' :
 
     save_path = os.path.join('./results', opt.dst)
     os.makedirs(save_path, exist_ok = True)
-    os.makedirs(os.path.join(save_path, 'inference'))
+    os.makedirs(os.path.join(save_path, 'inference'), exist_ok = True)
     #fid_calculator = FIDCalculator(opt, os.path.join(save_path, 'inference'), eval = True)
 
     for n, sample in enumerate(tqdm(loader, desc="{:17s}".format('Inference State'), mininterval=0.0001)) :
