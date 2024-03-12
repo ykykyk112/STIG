@@ -166,6 +166,49 @@ class ClassificationDataset(Dataset):
 
         dataloader = DataLoader(self, self.batch_size, shuffle = True)
         return dataloader
+    
+class InferenceDataset(Dataset):
+
+    def __init__(self, opt) :
+
+        self.init_options(opt)
+        self.set_options()
+        self.transform = transforms.Compose([
+            transforms.Resize((self.size, self.size)),
+            transforms.ToTensor(),
+        ])
+
+    def __getitem__(self, index):
+        
+        self.image = Image.open(self.img_list[index])
+        self.image = self.transform(self.image)
+
+        return self.image
+
+    def __len__(self) :
+
+        return len(self.img_list)
+
+    def init_options(self, opt) :
+
+        self.opt = opt
+        self.batch_size = opt.class_batch_size
+        self.size = opt.size
+        self.inference_data_root = opt.inference_data
+
+    def set_options(self) :
+
+        self.image_path = os.path.join(self.inference_data_root)
+        if not os.path.exists(self.inference_data_root) :
+            raise ValueError('Non-exist foler! ({})'.format(self.inference_data_root))
+
+        self.img_list = glob(os.path.join(self.image_path, '*.png'))
+        self.img_list.extend(glob(os.path.join(self.image_path, '*.jpg')))
+
+    def get_loader(self) :
+
+        dataloader = DataLoader(self, self.batch_size, shuffle = True)
+        return dataloader
 
 def get_dataset_from_option(opt) :
     
@@ -177,3 +220,10 @@ def get_dataset_from_option(opt) :
     train_dataloader = train_dataset.get_loader()
     
     return train_dataloader, train_dataloader
+
+def get_inference_dataset_from_option(opt) :
+
+    dataset = InferenceDataset(opt)
+    loader = dataset.get_loader()
+
+    return loader
