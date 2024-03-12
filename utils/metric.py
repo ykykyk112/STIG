@@ -297,7 +297,11 @@ class InferenceModel :
 
         model.set_input(input, evaluation = True)
 
+        input_img = model.image_A.detach().squeeze(0)
+        #input_mag = model.
+
         denoised_img = model.denoised_image_normed.detach().squeeze(0)
+        print(denoised_img.min(), denoised_img.max())
         denoised_mag = model.denoised_mag.detach().squeeze(0)
         
         denoised_pil = self.to_pil(denoised_img)
