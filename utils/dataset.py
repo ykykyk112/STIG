@@ -182,6 +182,7 @@ class InferenceDataset(Dataset):
         
         self.image = Image.open(self.img_list[index])
         self.image = self.transform(self.image)
+        print(self.image.shape)
 
         return self.image
 
