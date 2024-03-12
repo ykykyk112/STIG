@@ -44,6 +44,8 @@ class OptionConfigurator() :
         parser.add_argument('--is_train', type = str2bool, default = True, help = 'Flag for training a detector')
         parser.add_argument('--eval_root', type = str, default = 'none', help = 'Directory path of fake dataset for classification')
 
+        parser.add_argument('--inference_data', help = 'root of dataset directory for inference samples')
+
         return parser
 
     def print_options(self, opt) :
