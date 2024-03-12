@@ -269,3 +269,52 @@ class FIDCalculator :
         
         return mag_scaled
         
+class InferenceModel :
+    
+    def __init__(self, opt, save_path) :
+
+        self.save_path = save_path
+
+        self.device = opt.device
+        self.to_pil = ToPILImage()
+        self.to_tensor = ToTensor()
+        self.opt = opt
+
+        self.noise_path = os.path.join(self.save_path, 'noise')
+        self.denoised_path = os.path.join(self.save_path, 'denoised')
+
+        self.noise_mag_path = os.path.join(self.save_path, 'noise_mag')
+        self.denoised_mag_path = os.path.join(self.save_path, 'denoised_mag')
+        
+
+        os.mkdir(self.noise_path)
+        os.mkdir(self.denoised_path)
+
+        os.mkdir(self.noise_mag_path)
+        os.mkdir(self.denoised_mag_path)
+
+    def step(self, model, input) :
+
+        model.set_input(input, evaluation = True)
+
+        denoised_img = model.denoised_image_normed.detach().squeeze(0)
+        denoised_mag = model.denoised_mag.detach().squeeze(0)
+        
+        denoised_pil = self.to_pil(denoised_img)
+        denoised_mag_pil = self.to_pil(denoised_mag)
+
+        denoised_pil.save(os.path.join(self.denoised_path, '{:06d}.png'.format(n)), 'png')
+        denoised_mag_pil.save(os.path.join(self.denoised_mag_path, '{:06d}.png'.format(n)), 'png')
+
+    def zero_to_one(self, img) :
+
+        return (img + 1.) * (0.5) 
+
+    def to_magnitude(self, img) :
+
+        fft = torch.fft.fft2(img)
+        fft = torch.fft.fftshift(fft)
+        mag = torch.log1p(torch.abs(fft))
+        mag_scaled = (mag - mag.min()) / (mag.max() - mag.min())
+        
+        return mag_scaled

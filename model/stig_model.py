@@ -96,6 +96,9 @@ class STIG(nn.Module) :
             fake_B_inverse_normed = inverse_normalize(self.fake_B, self.A_vmax, self.A_vmin)
             self.denoised_image_A = polar2img(fake_B_inverse_normed, self.real_A_phase)
 
+            self.denoised_image_normed = image_normalize(self.denoised_image_A)
+            self.denoised_mag = get_magnitude(self.denoised_image_normed)
+
     def update_optimizer(self) :
         
         self.forward()

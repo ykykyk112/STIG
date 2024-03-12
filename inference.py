@@ -7,8 +7,7 @@ from tqdm import tqdm
 import os
 from utils.visualizing import Visualizer
 from utils.log import Logger
-from utils.metric import FIDCalculator
-from torch.utils.tensorboard import SummaryWriter
+from utils.metric import InferenceModel
 
 if __name__ == '__main__' :
 
@@ -31,10 +30,13 @@ if __name__ == '__main__' :
     save_path = os.path.join('./results', opt.dst)
     os.makedirs(save_path, exist_ok = True)
     os.makedirs(os.path.join(save_path, 'inference'), exist_ok = True)
-    #fid_calculator = FIDCalculator(opt, os.path.join(save_path, 'inference'), eval = True)
+    inferencer = InferenceModel(opt, os.path.join(save_path, 'inference'))
 
     for n, sample in enumerate(tqdm(loader, desc="{:17s}".format('Inference State'), mininterval=0.0001)) :
 
         model.set_input(sample, evaluation = True)
         model.evaluation()
-        print(model.fake_B.shape)
+
+        inferencer.step(model, n)
+        
+
