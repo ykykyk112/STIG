@@ -31,14 +31,9 @@ if __name__ == '__main__' :
     save_path = os.path.join('./results', opt.dst)
     os.makedirs(save_path, exist_ok = True)
     os.makedirs(os.path.join(save_path, 'inference'))
-    fid_calculator = FIDCalculator(opt, os.path.join(save_path, 'eval'))
+    #fid_calculator = FIDCalculator(opt, os.path.join(save_path, 'inference'), eval = True)
 
-    # for n, sample in enumerate(tqdm(loader, desc="{:17s}".format('Inference State'), mininterval=0.0001)) :
+    for n, sample in enumerate(tqdm(loader, desc="{:17s}".format('Inference State'), mininterval=0.0001)) :
 
-    #     if not fid_calculator.baseline_config :
-    #         fid_calculator.set_baseline_config(sample, n)
-
-    #     model.set_input(sample)
-    #     model.forward()
-
-    #     fid_calculator.step(model, n)
+        model.set_input(sample, evaluation = True)
+        model.evaluation()
