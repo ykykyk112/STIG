@@ -45,6 +45,7 @@ class OptionConfigurator() :
         parser.add_argument('--eval_root', type = str, default = 'none', help = 'Directory path of fake dataset for classification')
 
         parser.add_argument('--inference_data', help = 'root of dataset directory for inference samples')
+        parser.add_argument('--inference_params', help = 'root of model parameter for inference samples')
 
         return parser
 
