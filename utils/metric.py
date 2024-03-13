@@ -9,6 +9,7 @@ import os
 from PIL import Image
 import matplotlib.pyplot as plt
 from tqdm import tqdm
+import numpy as np
 
 '''
 FIDCalculator : Class for save samples from the trained STIG model.
@@ -303,17 +304,28 @@ class InferenceModel :
         denoised_img = model.denoised_image_normed.detach().squeeze(0).mean(0)
         denoised_mag = model.denoised_mag.detach().squeeze(0).mean(0)
         
-        input_pil = self.to_pil(input_img)
-        input_mag_pil = self.to_pil(input_mag)
+        # input_pil = self.to_pil(input_img)
+        # input_mag_pil = self.to_pil(input_mag)
 
-        denoised_pil = self.to_pil(denoised_img)
-        denoised_mag_pil = self.to_pil(denoised_mag)
+        # denoised_pil = self.to_pil(denoised_img)
+        # denoised_mag_pil = self.to_pil(denoised_mag)
 
-        input_pil.save(os.path.join(self.noise_path, '{:06d}.png'.format(n)), 'png')
-        input_mag_pil.save(os.path.join(self.noise_mag_path, '{:06d}.png'.format(n)), 'png')
+        # input_pil.save(os.path.join(self.noise_path, '{:06d}.png'.format(n)), 'png')
+        # input_mag_pil.save(os.path.join(self.noise_mag_path, '{:06d}.png'.format(n)), 'png')
 
-        denoised_pil.save(os.path.join(self.denoised_path, '{:06d}.png'.format(n)), 'png')
-        denoised_mag_pil.save(os.path.join(self.denoised_mag_path, '{:06d}.png'.format(n)), 'png')
+        # denoised_pil.save(os.path.join(self.denoised_path, '{:06d}.png'.format(n)), 'png')
+        # denoised_mag_pil.save(os.path.join(self.denoised_mag_path, '{:06d}.png'.format(n)), 'png')
+
+        input_img_np = input_img.numpy()
+        input_mag_np = np.clip(input_mag.numpy(), a_min = 0.03, a_max = 0.60)
+
+        denoised_img_np = denoised_img.numpy()
+        denoised_mag_np = np.clip(denoised_mag.numpy(), a_min = 0.03, a_max = 0.60)
+
+        plt.imsave(os.path.join(self.noise_mag_path, '{:06d}.png'.format(n)), input_mag_np, cmap='jet')
+        plt.imsave(os.path.join(self.denoised_mag_path, '{:06d}.png'.format(n)), denoised_mag_np, cmap='jet')
+        plt.imsave(os.path.join(self.noise_path, '{:06d}.png'.format(n)), input_img_np, cmap='jet')
+        plt.imsave(os.path.join(self.denoised_path, '{:06d}.png'.format(n)), denoised_img_np, cmap='jet')
 
     def zero_to_one(self, img) :
 
