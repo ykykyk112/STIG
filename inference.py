@@ -26,7 +26,6 @@ if __name__ == '__main__' :
     device = torch.device(opt.device) if is_gpu else torch.device('cpu')
 
     model = STIG(opt, device).to(device)
-
     model.load_checkpoint(opt.inference_params)
 
     save_path = os.path.join('/home/NAS_mount/sjlee/ContrastiveGAN/', opt.dst)

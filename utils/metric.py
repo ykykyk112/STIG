@@ -297,11 +297,11 @@ class InferenceModel :
 
         model.set_input(input, evaluation = True)
 
-        input_img = model.input_image_normed.detach().squeeze(0)
-        input_mag = model.input_mag.detach().squeeze(0)
+        input_img = model.input_image_normed.detach().squeeze(0).mean(0)
+        input_mag = model.input_mag.detach().squeeze(0).mean(0)
 
-        denoised_img = model.denoised_image_normed.detach().squeeze(0)
-        denoised_mag = model.denoised_mag.detach().squeeze(0)
+        denoised_img = model.denoised_image_normed.detach().squeeze(0).mean(0)
+        denoised_mag = model.denoised_mag.detach().squeeze(0).mean(0)
         
         input_pil = self.to_pil(input_img)
         input_mag_pil = self.to_pil(input_mag)
