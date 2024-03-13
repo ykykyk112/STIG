@@ -322,10 +322,10 @@ class InferenceModel :
         denoised_img_np = denoised_img.cpu().numpy()
         denoised_mag_np = np.clip(denoised_mag.cpu().numpy(), a_min = 0.03, a_max = 0.60)
 
-        plt.imsave(os.path.join(self.noise_mag_path, '{:06d}.png'.format(n)), input_mag_np, cmap = 'gray')
+        plt.imsave(os.path.join(self.noise_mag_path, '{:06d}.png'.format(n)), input_mag_np, cmap = 'jet')
         plt.imsave(os.path.join(self.denoised_mag_path, '{:06d}.png'.format(n)), denoised_mag_np, cmap='jet')
         plt.imsave(os.path.join(self.noise_path, '{:06d}.png'.format(n)), input_img_np, cmap = 'gray')
-        plt.imsave(os.path.join(self.denoised_path, '{:06d}.png'.format(n)), denoised_img_np, cmap='jet')
+        plt.imsave(os.path.join(self.denoised_path, '{:06d}.png'.format(n)), denoised_img_np, cmap='gray')
 
     def zero_to_one(self, img) :
 
