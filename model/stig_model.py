@@ -33,6 +33,8 @@ class STIG(nn.Module) :
 
         self.dc_pos = self.opt.size // 2 + 1
         self.sigma = opt.sigma
+        self.in_channels = self.opt.input_nc
+        self.out_channels = self.opt.output_nc
 
     def set_input(self, input, evaluation = False) :
 
@@ -198,8 +200,8 @@ class STIG(nn.Module) :
 
     def _build_modules(self) :
 
-        self.generator = NestedUNet(3, 3, spatial = False)
-        self.discriminator = PatchDiscriminator(3).to(self.device)
+        self.generator = NestedUNet(self.input_nc, self.output_nc, spatial = False)
+        self.discriminator = PatchDiscriminator(self.input_nc).to(self.device)
         self.mlp = PatchSampleF(use_mlp=True, nc=self.n_patches, device = self.device).to(self.device)
         
         self.generator = init_net(self.generator)
