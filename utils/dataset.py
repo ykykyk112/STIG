@@ -33,11 +33,11 @@ class RealFakeDataset(Dataset) :
         self.fake = Image.open(self.files_fake[index])
 
         self.real = self.transform(self.real)
-        if self.real.shape[0] == 1 :
-            self.real = self.real.repeat(3, 1, 1)
+        #if self.real.shape[0] == 1 :
+        #    self.real = self.real.repeat(3, 1, 1)
         self.fake = self.transform(self.fake)
-        if self.fake.shape[0] == 1 :
-            self.fake = self.fake.repeat(3, 1, 1)
+        #if self.fake.shape[0] == 1 :
+        #    self.fake = self.fake.repeat(3, 1, 1)
 
         return {'clean' : self.real, 'noise' : self.fake}
 
