@@ -223,7 +223,7 @@ class RectAverage(nn.Module) :
                         0.587 * x[:,1,:,:] + \
                         0.114 * x[:,2,:,:]
             else :
-                mag = x
+                mag = mag.squeeze(1)
             mag = 20 * mag
         
         return mag
