@@ -231,6 +231,7 @@ class RectAverage(nn.Module) :
     def forward(self, x) :
 
         self.mag = self.fft(x)
+        print(self.mag.shape)
         mag = self.mag.unsqueeze(1).expand(-1, self.vector_length, -1, -1)
 
         # apply mask and compute profile vector
