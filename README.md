@@ -1,5 +1,5 @@
 # STIG: Spectrum Translation for refinement of Image Generation
-STIG is for boosting the quality of image generation by reducing spectral discrepancies of current generative models including GANs and Diffusion Models. The algorithm is elaborated in our paper ```\[Spectrum Translation] \[1]``` that has been published in AAAI 2024.
+STIG is for boosting the quality of image generation by reducing spectral discrepancies of current generative models including GANs and Diffusion Models. The algorithm is elaborated in our paper [Spectrum Translation] (https://ojs.aaai.org/index.php/AAAI/article/view/28074/28154) that has been published in AAAI 2024.
 
 
 ## Quick Overview
@@ -63,4 +63,3 @@ We use the bi-linear upsampling layer (```nn.Upsample```) in the STIG.
 
 It is well known that ```nn.Upsample``` behaves non-deterministically because the internal layer ```F.interpolate``` of the PyTorch implementation.
 
-[1] https://ojs.aaai.org/index.php/AAAI/article/view/28074/28154
