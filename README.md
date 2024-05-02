@@ -11,6 +11,7 @@ STIG mitigates spectral discrepancies of the generated images based on GAN-based
 
 ### Effectiveness of STIG
 STIG can reduce the spectral disparity of various generative models including GANs and diffusion models. It erased the disparity pattern (checkerboard artifacts) on the spectrum of GAN models and enriched high-frequency details for images from diffusion models.
+
 ![effectiveness_figure](https://github.com/ykykyk112/STIG/assets/59644868/bf19856b-5dfe-4d5d-b728-db7e10ee867a)
 
 ## Installing dependency
