@@ -1,5 +1,5 @@
 # STIG: Spectrum Translation for refinement of Image Generation
-STIG is for boosting the quality of image generation by reducing spectral discrepancies of current generative models including GANs and Diffusion Models. The algorithm is elaborated in our paper [Spectrum Translation](https://ojs.aaai.org/index.php/AAAI/article/view/28074/28154) that has been published in AAAI 2024.
+STIG is for boosting the quality of image generation by reducing spectral discrepancies of current generative models including GANs and Diffusion Models. The algorithm is elaborated in our paper ["Spectrum Translation for Refinement of Image Generation (STIG) Based on Contrastive Learning and Spectral Filter Profile"](https://ojs.aaai.org/index.php/AAAI/article/view/28074/28154) that has been published in AAAI 2024.
 
 
 ## Quick Overview
@@ -9,7 +9,6 @@ STIG mitigates spectral discrepancies of the generated images based on GAN-based
 ![figure_3_camera_ready_version](https://github.com/ykykyk112/STIG/assets/59644868/33fc02a5-c95f-43fb-a74a-c49486aa65b1)
 
 ### Effectiveness of STIG
-
 
 ## Installing dependency
 ```
