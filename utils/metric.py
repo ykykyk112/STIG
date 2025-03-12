@@ -298,11 +298,11 @@ class InferenceModel :
 
         model.set_input(input, evaluation = True)
 
-        input_img = model.input_image_normed.detach().squeeze(0).mean(0)
-        input_mag = model.input_mag.detach().squeeze(0).mean(0)
+        input_img = model.input_image_normed.detach().squeeze(0)
+        input_mag = model.input_mag.detach().squeeze(0)
 
-        denoised_img = model.denoised_image_normed.detach().squeeze(0).mean(0)
-        denoised_mag = model.denoised_mag.detach().squeeze(0).mean(0)
+        denoised_img = model.denoised_image_normed.detach().squeeze(0)
+        denoised_mag = model.denoised_mag.detach().squeeze(0)
         
         # input_pil = self.to_pil(input_img)
         # input_mag_pil = self.to_pil(input_mag)
@@ -324,8 +324,8 @@ class InferenceModel :
 
         plt.imsave(os.path.join(self.noise_mag_path, '{:06d}.png'.format(n)), input_mag_np, cmap = 'jet')
         plt.imsave(os.path.join(self.denoised_mag_path, '{:06d}.png'.format(n)), denoised_mag_np, cmap='jet')
-        plt.imsave(os.path.join(self.noise_path, '{:06d}.png'.format(n)), input_img_np, cmap = 'gray')
-        plt.imsave(os.path.join(self.denoised_path, '{:06d}.png'.format(n)), denoised_img_np, cmap='gray')
+        plt.imsave(os.path.join(self.noise_path, '{:06d}.png'.format(n)), input_img_np)
+        plt.imsave(os.path.join(self.denoised_path, '{:06d}.png'.format(n)), denoised_img_np)
 
     def zero_to_one(self, img) :
 
