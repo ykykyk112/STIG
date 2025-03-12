@@ -28,7 +28,7 @@ if __name__ == '__main__' :
     model = STIG(opt, device).to(device)
     model.load_checkpoint(opt.inference_params)
 
-    save_path = os.path.join('./results', opt.dst)
+    save_path = os.path.join('/home/NAS_mount/sjlee/ContrastiveGAN/', opt.dst)
     os.makedirs(save_path, exist_ok = True)
     os.makedirs(os.path.join(save_path, 'inference'), exist_ok = True)
     inferencer = InferenceModel(opt, os.path.join(save_path, 'inference'))
