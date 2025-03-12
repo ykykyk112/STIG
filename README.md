@@ -50,7 +50,7 @@ We also provide a training log using the ```tensorboard``` library. If you want 
 
 ```python inference.py --size {size} --inference_data {folder_path_of_images} --device {gpu_ids} --dst {experiment_name}```
 
-Enter the command below. You can change the GPU device by modifying the option ```--device```.
+Enter the command. You can change the GPU device by modifying the option ```--device```.
 
 The inference results are saved at ```results/{experiment_name}/inference/```. Put the folder path of the inference data into ```--inference_data```, and also put the path of model parameters onto ```--inference_param```.
 
@@ -58,13 +58,14 @@ The inference results are saved at ```results/{experiment_name}/inference/```. P
 
 ```python eval.py --eval_root {experiment_name} --eval_mode {metric} --device {gpu_ids}```
 
-We provide three evaluation metric, FID and log frequency distance. To evaluate your experiment result, enter the command below. You can choose the evaluation metric in ```[image_fid / magnitude_fid / lfd]```. The default option is set to ```magnitude_fid```.
+We provide three evaluation metric, FID and log frequency distance. To evaluate your experiment result, enter the command. You can choose the evaluation metric in ```[image_fid / magnitude_fid / lfd]```. The default option is set to ```magnitude_fid```.
 
 
 ## Deepfake detection
-We provide sample codes to train and evaluate the detectors in the paper. To train the detector, choose the classifier from ```[cnn / vit]``` and enter the command below.
 
 ```python detect.py --is_train True --classifier {classifier} --lr 0.0002 --size {size} --device {gpu_ids} --class_epoch 20 --class_batch_size 32 --dst {experiment_name}```
+
+We provide sample codes to train and evaluate the detectors in the paper. To train the detector, choose the classifier from ```[cnn / vit]``` and enter the command.
 
 The training results of the detector are saved in the folder ```results/{experiment_name}/{classifier}_classifier/```.
 
