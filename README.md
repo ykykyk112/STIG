@@ -48,7 +48,7 @@ We also provide a training log using the ```tensorboard``` library. If you want 
 ## Inference STIG
 Enter the command below. You can change the GPU device by modifying the option ```--device```.
 
-The inference results are saved at ```results/{experiment_name}/inference/```. Put the folder path of the inference data into ```--inference_data```, and choose the model parameter onto ```--inference_param```.
+The inference results are saved at ```results/{experiment_name}/inference/```. Put the folder path of the inference data into ```--inference_data```, and also put the path of model parameters onto ```--inference_param```.
 
 ```python train.py --size {size} --inference_data {folder_path_of_images} --device {gpu_ids} --dst {experiment_name}```
 
