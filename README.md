@@ -35,27 +35,31 @@ Put real and fake datasets in the folder ```datasets/```.
 The real images should be located in ```datasets/{dataset_name}/real/``` and generated images should be in ```datasets/{dataset_name}/fake/```. We suppose the type of image file is ```.png```, so you should consider it.
 
 ## Training STIG
-Enter the command below. You can change the GPU device by modifying the option ```--device```.
-
-The sampled results are visualized in the ```results/{experiment_name}/sample/``` during the training. After training, the results image and magnitude spectrum will be saved at each folder in ```results/{experiment_name}/eval/```.
 
 ```python train.py --size {size} --data {dataset_name} --epoch 10 --batch_size 1 --lr 0.00008 --device {gpu_ids} --dst {experiment_name}```
+
+Enter the command. You can change the GPU device by modifying the option ```--device```.
+
+The sampled results are visualized in the ```results/{experiment_name}/sample/``` during the training. After training, the results image and magnitude spectrum will be saved at each folder in ```results/{experiment_name}/eval/```.
 
 We also provide a training log using the ```tensorboard``` library. If you want to use it, you can access the training log using the code below.
 
 ```tensorboard --logdir='./results/{experiment_name}/tensorboard'```
 
 ## Inference STIG
+
+```python inference.py --size {size} --inference_data {folder_path_of_images} --device {gpu_ids} --dst {experiment_name}```
+
 Enter the command below. You can change the GPU device by modifying the option ```--device```.
 
 The inference results are saved at ```results/{experiment_name}/inference/```. Put the folder path of the inference data into ```--inference_data```, and also put the path of model parameters onto ```--inference_param```.
 
-```python train.py --size {size} --inference_data {folder_path_of_images} --device {gpu_ids} --dst {experiment_name}```
-
 ## Evaluation STIG
-We provide three evaluation metric, FID and log frequency distance. To evaluate your experiment result, enter the command below. You can choose the evaluation metric in ```[image_fid / magnitude_fid / lfd]```. The default option is set to ```magnitude_fid```.
 
 ```python eval.py --eval_root {experiment_name} --eval_mode {metric} --device {gpu_ids}```
+
+We provide three evaluation metric, FID and log frequency distance. To evaluate your experiment result, enter the command below. You can choose the evaluation metric in ```[image_fid / magnitude_fid / lfd]```. The default option is set to ```magnitude_fid```.
+
 
 ## Deepfake detection
 We provide sample codes to train and evaluate the detectors in the paper. To train the detector, choose the classifier from ```[cnn / vit]``` and enter the command below.
