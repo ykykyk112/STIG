@@ -316,10 +316,10 @@ class InferenceModel :
         # denoised_pil.save(os.path.join(self.denoised_path, '{:06d}.png'.format(n)), 'png')
         # denoised_mag_pil.save(os.path.join(self.denoised_mag_path, '{:06d}.png'.format(n)), 'png')
 
-        input_img_np = input_img.cpu().numpy()
+        input_img_np = np.transpose(input_img.cpu().numpy(), (1, 2, 0))
         input_mag_np = np.clip(input_mag.cpu().numpy(), a_min = 0.00, a_max = 1.0)
 
-        denoised_img_np = denoised_img.cpu().numpy()
+        denoised_img_np = np.transpose(denoised_img.cpu().numpy(), (1, 2, 0))
         denoised_mag_np = np.clip(denoised_mag.cpu().numpy(), a_min = 0.00, a_max = 1.0)
         print(input_img_np.shape, input_mag_np.shape, denoised_img_np.shape, denoised_mag_np.shape)
 
